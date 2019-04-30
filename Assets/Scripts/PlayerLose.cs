@@ -5,6 +5,9 @@ public class PlayerLose : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene("GameOver");
+        if (collision.tag == "Ball")
+        {
+           SceneManager.LoadScene("GameOver");
+        }
     }
 }
