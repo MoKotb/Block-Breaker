@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-using TMPro;
 
 public class GameSession : MonoBehaviour
 {
     [Range(0.5f,5f)] [SerializeField] float gameSpeed = 1f;
-    [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] int currentScore = 0;
     [SerializeField] int pointsPerBlockDestoryed = 50;
     [SerializeField] bool isAutoPlayEnabled;
@@ -23,22 +21,19 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        if(scoreText != null)
-            scoreText.text = currentScore.ToString();
-    }
-
     void Update()
     {
         Time.timeScale = gameSpeed;
     }
 
-    public void AddToScore()
+    public void SetScore()
     {
         currentScore += pointsPerBlockDestoryed;
-        if (scoreText != null)
-            scoreText.text = currentScore.ToString();
+    }
+
+    public int GetScore()
+    {
+        return currentScore;
     }
 
     public void ResetGame()
